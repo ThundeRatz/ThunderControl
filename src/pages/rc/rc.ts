@@ -17,7 +17,7 @@ export class RCPage {
   }
 
   bt() {
-    this._ble.connect();
+    this._ble.scan();
   }
 
   ionViewDidLoad() {
