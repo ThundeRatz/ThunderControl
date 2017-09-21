@@ -1,8 +1,9 @@
 <ion-content padding>
-  <button ion-button block primary id="bt-btn" (click)="bt()">
+  <button ion-button block [color]="_ble.connected ? 'play' : 'danger'" id="bt-btn" (click)="bt()">
     <ion-icon name="bluetooth"></ion-icon>
   </button>
   <div id="zone-joystick">
-    <h2>RC Test</h2>
+    <h2>X: {{ pos_x }}</h2>
+    <h2>Y: {{ pos_y }}</h2>
   </div>
 </ion-content>

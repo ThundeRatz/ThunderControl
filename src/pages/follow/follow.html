@@ -1,11 +1,11 @@
 <ion-content padding>
-  <button ion-button block primary id="bt-btn" (click)="bt()">
+  <button ion-button block [color]="_ble.connected ? 'play' : 'danger'" id="bt-btn" (click)="bt()">
     <ion-icon name="bluetooth"></ion-icon>
   </button>
 
-  <div id="play-pause">
-    <p>Play</p>
-  </div>
+  <button ion-button block color="play" id="play-pause">
+    <ion-icon name="play"></ion-icon>
+  </button>
 
   <div id="sensors">
     <div class="sensor">

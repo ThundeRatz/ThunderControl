@@ -14,16 +14,15 @@ page-follow {
         border: 1px solid black;
         left: 10vw;
         top: calc(50vh - 50vw);
-        text-align: center;
 
         display: flex;
         flex-direction: column;
         justify-content: space-around;
+        align-items: center;
+        text-align: center;
+        font-size: 1000%;
 
-        p {
-            vertical-align: middle;
-            // margin: auto;
-        }
+        border-radius: 50%;
     }
 
     #sensors {
@@ -47,8 +46,6 @@ page-follow {
 
             .circle {
                 width: 50%;
-                height: 50%;
-                // background: black;
                 border: solid 1px black;
                 border-radius: 100%;
             }
