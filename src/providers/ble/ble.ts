@@ -39,11 +39,13 @@ export class BleProvider {
       alert.setTitle('Dispositivos Encontrados');
 
       for (let dev of this.devices) {
-        alert.addInput({
-          type: 'radio',
-          label: dev.name,
-          value: dev.id
-        });
+        if (dev.name) {
+          alert.addInput({
+            type: 'radio',
+            label: dev.name,
+            value: dev
+          });
+        }
       }
 
       alert.addButton('Cancel');
@@ -59,23 +61,51 @@ export class BleProvider {
     }, 10000);
   }
 
-  connect(dev_id) {
+  connect(dev) {
     this.ble.isEnabled().then(() => {
       this.ble.enable();
     });
 
-    this.ble.isConnected(dev_id).then(() => {
+    this.ble.isConnected(dev.id).then(() => {
       console.log('Already connected');
       this.connected = true;
     }, () => {
       console.log('Disconnected, connecting...');
       this.connected = false;
 
-      this.ble.connect(dev_id).subscribe(() => {
+      this.ble.connect(dev.id).subscribe((ndev) => {
         console.log("Conectado!");
+        console.log(ndev);
+        this.toaster.create({
+          message: 'Conectado!',
+          duration: 1500,
+          position: 'bottom'
+        }).present();
         this.connected = true;
+
+        this.ble.startNotification(dev.id, "FFE0", "FFE1").subscribe((data) => {
+          let received = new Uint8Array(data);
+          console.log("Recebido: ");
+          console.log(received);
+        });
+
+        // Envio de teste
+        let data = new Uint8Array(3);
+        data[0] = 50;
+        data[1] = 51;
+        data[2] = 52;
+        this.ble.writeWithoutResponse(dev.id, "FFE0", "FFE1", data.buffer).then(() => {
+          console.log("Enviado!");
+        })
+
       }, () => {
         console.log("Conection failed");
+        this.toaster.create({
+          message: 'Desconectado',
+          duration: 1500,
+          position: 'bottom'
+        }).present();
+        this.connected = false;
       })
     });
   }

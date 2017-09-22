@@ -1,6 +1,6 @@
 {
   "name": "ThunderControl",
-  "app_id": "",
+  "app_id": "1ab4bbfe",
   "type": "ionic-angular",
   "integrations": {
     "cordova": {}
