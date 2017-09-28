@@ -8,13 +8,16 @@ import { BleProvider } from '../../providers/ble/ble';
   templateUrl: 'follow.html'
 })
 export class FollowPage {
-  constructor(public navCtrl: NavController, public _ble: BleProvider) {
+  constructor(public navCtrl: NavController, public ble_provider: BleProvider) {
 
   }
 
   bt() {
-    this._ble.scan();
-    
+    this.ble_provider.ble.isEnabled().then(() => {
+      this.ble_provider.scan();
+    }, () => {
+      this.ble_provider.ble.enable();
+    });
   }
 
   ionViewDidLoad() {

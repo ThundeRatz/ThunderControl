@@ -12,10 +12,6 @@ export class BleProvider {
   }
 
   scan() {
-    this.ble.isEnabled().then(() => {
-      this.ble.enable();
-    });
-
     this.devices = [];
 
     this.ble.startScan([]).subscribe((dev) => {
@@ -62,10 +58,6 @@ export class BleProvider {
   }
 
   connect(dev) {
-    this.ble.isEnabled().then(() => {
-      this.ble.enable();
-    });
-
     this.ble.isConnected(dev.id).then(() => {
       console.log('Already connected');
       this.connected = true;

@@ -1,5 +1,5 @@
 <ion-content padding>
-  <button ion-button block [color]="_ble.connected ? 'play' : 'danger'" id="bt-btn" (click)="bt()">
+  <button ion-button block [color]="ble_provider.connected ? 'play' : 'danger'" id="bt-btn" (click)="bt()">
     <ion-icon name="bluetooth"></ion-icon>
   </button>
 

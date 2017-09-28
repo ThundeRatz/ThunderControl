@@ -11,6 +11,8 @@ import { TabsPage } from '../pages/tabs/tabs';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { ScreenOrientation } from '@ionic-native/screen-orientation';
+
 import { BleProvider } from '../providers/ble/ble';
 
 @NgModule({
@@ -34,6 +36,7 @@ import { BleProvider } from '../providers/ble/ble';
   providers: [
     StatusBar,
     SplashScreen,
+    ScreenOrientation,
     BLE,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     BleProvider
