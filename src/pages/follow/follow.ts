@@ -8,8 +8,16 @@ import { BleProvider } from '../../providers/ble/ble';
   templateUrl: 'follow.html'
 })
 export class FollowPage {
-  constructor(public navCtrl: NavController, public ble_provider: BleProvider) {
+  sensors: Array<{ value: number, color: string }>;
 
+  constructor(public navCtrl: NavController, public ble_provider: BleProvider) {
+    this.sensors = [
+      { value: 0, color: '#FFF' },
+      { value: 1, color: '#CCC' },
+      { value: 2, color: '#555' },
+      { value: 3, color: '#333' },
+      { value: 4, color: '#000' }
+    ];
   }
 
   bt() {

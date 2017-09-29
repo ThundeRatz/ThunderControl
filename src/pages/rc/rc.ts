@@ -104,8 +104,8 @@ export class RCPage {
         this.current_section += "3";
 
       if (this.current_section != this.previous_section) {
-        console.log("Changed to ", this.current_section);
-        console.log(this.section['C']);
+        console.log("Changed to", this.current_section);
+        console.log(this.section[this.current_section]);
       }
 
       this.previous_section = this.current_section;

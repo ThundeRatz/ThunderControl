@@ -2,7 +2,15 @@
   <button ion-button block [color]="ble_provider.connected ? 'play' : 'danger'" id="bt-btn" (click)="bt()">
     <ion-icon name="bluetooth"></ion-icon>
   </button>
+
+  <button ion-button block [color]="primary" id="instructions-btn">
+    <ion-icon name="help"></ion-icon>
+  </button>
+
   <div id="zone-joystick">
+    <br>
+    <br>
+    <br>
     <h2>A: {{ angle }}</h2>
     <h2>D: {{ dist }}</h2>
     <h2>S: {{ current_section }}</h2>

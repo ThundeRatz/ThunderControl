@@ -12,11 +12,12 @@ export class BleProvider {
   }
 
   scan() {
-    this.devices = [];
+    // this.devices = [];
 
     this.ble.startScan([]).subscribe((dev) => {
       console.log(JSON.stringify(dev));
-      this.devices.push(dev);
+      if (!this.devices.some(d => d.id === dev.id))
+        this.devices.push(dev);
     });
 
     let loading = this.loader.create({
@@ -79,6 +80,8 @@ export class BleProvider {
           let received = new Uint8Array(data);
           console.log("Recebido: ");
           console.log(received);
+        }, () => {
+          console.log("ERR - startNotification");
         });
 
         // Envio de teste
@@ -88,6 +91,8 @@ export class BleProvider {
         data[2] = 52;
         this.ble.writeWithoutResponse(dev.id, "FFE0", "FFE1", data.buffer).then(() => {
           console.log("Enviado!");
+        }, () => {
+          console.log("ERR - writeWithoutResponse");
         })
 
       }, () => {
