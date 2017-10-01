@@ -4,8 +4,8 @@ import { LoadingController, ToastController, AlertController } from 'ionic-angul
 
 @Injectable()
 export class BleProvider {
-  public connected: boolean = false;
   public devices: Array<any>;
+  private connected_dev: any;
 
   constructor(public ble: BLE, private toaster: ToastController, private loader: LoadingController, private alertCtrl: AlertController) {
     this.devices = [];
@@ -16,7 +16,7 @@ export class BleProvider {
 
     this.ble.startScan([]).subscribe((dev) => {
       console.log(JSON.stringify(dev));
-      if (!this.devices.some(d => d.id === dev.id))
+      if (!this.devices.some(d => d.id === dev.id) && dev.name)
         this.devices.push(dev);
     });
 
@@ -36,22 +36,22 @@ export class BleProvider {
       alert.setTitle('Dispositivos Encontrados');
 
       for (let dev of this.devices) {
-        if (dev.name) {
-          alert.addInput({
-            type: 'radio',
-            label: dev.name,
-            value: dev
-          });
-        }
+        alert.addInput({
+          type: 'radio',
+          label: dev.name,
+          value: dev
+        });
       }
 
       alert.addButton('Cancel');
-      alert.addButton({
-        text: 'Conectar',
-        handler: data => {
-          this.connect(data);
-        }
-      })
+      if (this.devices.length > 0) {
+        alert.addButton({
+          text: 'Conectar',
+          handler: data => {
+            this.connect(data);
+          }
+        })
+      }
 
       alert.present();
 
@@ -61,20 +61,19 @@ export class BleProvider {
   connect(dev) {
     this.ble.isConnected(dev.id).then(() => {
       console.log('Already connected');
-      this.connected = true;
     }, () => {
       console.log('Disconnected, connecting...');
-      this.connected = false;
+      this.connected_dev = undefined;
 
       this.ble.connect(dev.id).subscribe((ndev) => {
         console.log("Conectado!");
         console.log(ndev);
+        this.connected_dev = ndev;
         this.toaster.create({
           message: 'Conectado!',
           duration: 1500,
           position: 'bottom'
         }).present();
-        this.connected = true;
 
         this.ble.startNotification(dev.id, "FFE0", "FFE1").subscribe((data) => {
           let received = new Uint8Array(data);
@@ -83,18 +82,6 @@ export class BleProvider {
         }, () => {
           console.log("ERR - startNotification");
         });
-
-        // Envio de teste
-        let data = new Uint8Array(3);
-        data[0] = 50;
-        data[1] = 51;
-        data[2] = 52;
-        this.ble.writeWithoutResponse(dev.id, "FFE0", "FFE1", data.buffer).then(() => {
-          console.log("Enviado!");
-        }, () => {
-          console.log("ERR - writeWithoutResponse");
-        })
-
       }, () => {
         console.log("Conection failed");
         this.toaster.create({
@@ -102,8 +89,26 @@ export class BleProvider {
           duration: 1500,
           position: 'bottom'
         }).present();
-        this.connected = false;
+        this.connected_dev = undefined;
       })
     });
+  }
+
+  sendCommand(value: number) {
+    if (!this.connected_dev)
+      return;
+
+    this.ble.isConnected(this.connected_dev.id).then(() => {
+      let data = new Uint8Array(1);
+      data[0] = value;
+
+      this.ble.writeWithoutResponse(this.connected_dev.id, "FFE0", "FFE1", data.buffer).then(() => {
+        console.log("Enviado!");
+      }, () => {
+        console.log("ERR - writeWithoutResponse");
+      })
+    }, () => {
+      console.log('Not connected');
+    })
   }
 }

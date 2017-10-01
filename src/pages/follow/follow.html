@@ -1,29 +1,31 @@
 <ion-content>
-  <button ion-button block [color]="ble_provider.connected ? 'play' : 'danger'" id="bt-btn" (click)="bt()">
+  <button ion-button block [color]="ble_provider.connected_dev ? 'play' : 'danger'" id="bt-btn" (click)="bt()">
     <ion-icon name="bluetooth"></ion-icon>
   </button>
 
   <h1 class="title">Seguidor</h1>
 
-  <button ion-button block color="primary" id="instructions-btn">
+  <button ion-button block color="primary" id="instructions-btn" (click)="help()">
     <ion-icon name="help"></ion-icon>
   </button>
 
   <ion-grid id="play-pause">
     <ion-row>
       <ion-col col>
-        <button ion-button block large color="play"><ion-icon name="play"></ion-icon></button>
+        <button ion-button block large color="play"><ion-icon name="play" (click)="play()"></ion-icon></button>
       </ion-col>
       <ion-col col>
-        <button ion-button block large color="danger"><ion-icon name="pause"></ion-icon></button>
+        <button ion-button block large color="danger"><ion-icon name="pause" (click)="pause()"></ion-icon></button>
       </ion-col>
     </ion-row>
   </ion-grid>
 
-  <div id="sensors">
-    <div class="sensor" *ngFor="let sensor of sensors">
-      <div class="circle" [ngStyle]="{'background-color': sensor.color }"></div>
-      <p class="sensor_value">{{ sensor.value }}</p>
+  <div id="sensors-container">
+    <div id="sensors">
+      <div class="sensor" *ngFor="let sensor of sensors">
+        <p class="sensor_value">{{ sensor.value }}</p>
+        <div class="circle" [ngStyle]="{'background-color': sensor.color }"></div>
+      </div>
     </div>
   </div>
 </ion-content>

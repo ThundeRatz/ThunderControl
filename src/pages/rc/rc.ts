@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, ModalController } from 'ionic-angular';
 import { BleProvider } from '../../providers/ble/ble';
+import { HelpPage } from '../help/help'
 
 import nipplejs from 'nipplejs';
 
@@ -16,37 +17,42 @@ export class RCPage {
   current_section: string;
   previous_section: string;
 
-  constructor(public navCtrl: NavController, public ble_provider: BleProvider) {
+  constructor(public navCtrl: NavController, public ble_provider: BleProvider, public modalCtrl: ModalController) {
     this.section = {
       'C': 0,
-      'F1': 1,
-      'F2': 2,
-      'F3': 3,
-      'FD1': 4,
-      'FD2': 5,
-      'FD3': 6,
-      'D1': 7,
-      'D2': 8,
-      'D3': 9,
-      'TD1': 10,
-      'TD2': 11,
-      'TD3': 12,
-      'T1': 13,
-      'T2': 14,
-      'T3': 15,
-      'TE1': 16,
-      'TE2': 17,
-      'TE3': 18,
-      'E1': 19,
-      'E2': 20,
-      'E3': 21,
-      'FE1': 22,
-      'FE2': 23,
-      'FE3': 24,
+      'F1': 11,
+      'F2': 12,
+      'F3': 13,
+      'FD1': 21,
+      'FD2': 22,
+      'FD3': 23,
+      'D1': 31,
+      'D2': 32,
+      'D3': 33,
+      'TD1': 41,
+      'TD2': 42,
+      'TD3': 43,
+      'T1': 51,
+      'T2': 52,
+      'T3': 53,
+      'TE1': 61,
+      'TE2': 62,
+      'TE3': 63,
+      'E1': 71,
+      'E2': 72,
+      'E3': 73,
+      'FE1': 81,
+      'FE2': 82,
+      'FE3': 83,
     };
 
     this.current_section = 'C'
     this.previous_section = 'C'
+  }
+
+  help() {
+    const help_modal = this.modalCtrl.create(HelpPage);
+    help_modal.present();
   }
 
   bt() {
@@ -70,6 +76,7 @@ export class RCPage {
     };
 
     let manager = nipplejs.create(options);
+    let max_dist = options.size;
 
     manager.on('move', (evt, data) => {
       this.angle = Math.floor(data.angle.degree);
@@ -94,11 +101,12 @@ export class RCPage {
       else if (data.angle.degree < 360)
         this.current_section = "D";
 
-      if (data.distance < 13)
+
+      if (data.distance < 0.1*max_dist)
         this.current_section = 'C';
-      else if (data.distance < 39)
+      else if (data.distance < 0.3*max_dist)
         this.current_section += "1";
-      else if (data.distance < 78)
+      else if (data.distance < 0.7*max_dist)
         this.current_section += "2";
       else
         this.current_section += "3";
@@ -106,6 +114,7 @@ export class RCPage {
       if (this.current_section != this.previous_section) {
         console.log("Changed to", this.current_section);
         console.log(this.section[this.current_section]);
+        this.ble_provider.sendCommand(this.section[this.current_section]);
       }
 
       this.previous_section = this.current_section;
@@ -114,6 +123,7 @@ export class RCPage {
       this.current_section = 'C';
       this.angle = 0;
       this.dist = 0;
+      this.ble_provider.sendCommand(this.section[this.current_section]);
     });
   }
 

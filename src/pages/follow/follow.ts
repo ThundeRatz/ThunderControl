@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, ModalController } from 'ionic-angular';
 import { BleProvider } from '../../providers/ble/ble';
-
+import { HelpPage } from '../help/help'
 
 @Component({
   selector: 'page-follow',
@@ -10,7 +10,7 @@ import { BleProvider } from '../../providers/ble/ble';
 export class FollowPage {
   sensors: Array<{ value: number, color: string }>;
 
-  constructor(public navCtrl: NavController, public ble_provider: BleProvider) {
+  constructor(public navCtrl: NavController, public ble_provider: BleProvider, public modalCtrl: ModalController) {
     this.sensors = [
       { value: 0, color: '#FFF' },
       { value: 1, color: '#CCC' },
@@ -20,12 +20,25 @@ export class FollowPage {
     ];
   }
 
+  help() {
+    const help_modal = this.modalCtrl.create(HelpPage);
+    help_modal.present();
+  }
+
   bt() {
     this.ble_provider.ble.isEnabled().then(() => {
       this.ble_provider.scan();
     }, () => {
       this.ble_provider.ble.enable();
     });
+  }
+
+  play() {
+    this.ble_provider.sendCommand(200);
+  }
+
+  pause() {
+    this.ble_provider.sendCommand(201);
   }
 
   ionViewDidLoad() {
