@@ -3,13 +3,14 @@ page-help {
     text-align: center;
   }
 
-  ion-slide {
+  ion-slides {
     background-color: map-get($colors, primary);
     color: map-get($colors, light);
-    img {
-      height: 70vh !important;
-      width: auto !important;
-    }
+  }
+
+  ion-slide img {
+    height: 70vh !important;
+    width: auto !important;
   }
 
 }
