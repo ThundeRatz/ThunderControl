@@ -1,3 +1,61 @@
 <ion-content padding>
-  <button ion-button (click)="startApp()">Olares</button>
+
+  <ion-slides pager="true">
+
+    <ion-slide>
+      <h1 class="title"> Introdu&ccedil;&atilde;o </h1>
+      <br>
+      ThunderControl é o aplicativo feito pela equipe ThundeRatz
+      de robótica para controlar o kit do ThunderWorkshop. O workshop
+      tem o objetivo de introduzir alguns conceitos necessários para
+      fazer robôs, mostrando um pouco da forma como a equipe trabalha. 
+      Para isso, há atividades para robôs de hockey, sumô e seguidor 
+      de linha.
+    </ion-slide>
+    <ion-slide>
+      <ion-row>
+        <ion-col>
+          Ative o bluetooth.
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+            <img src="assets/bluetooth.png" />
+        </ion-col>
+      </ion-row>
+    </ion-slide>
+    <ion-slide>
+      <ion-row>
+        <ion-col>
+          Controle o hockey ou o sumô com o joystick.
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+            <img src="assets/rc.png" />
+        </ion-col>
+      </ion-row>
+    </ion-slide>
+    <ion-slide>
+      <ion-row>
+        <ion-col>
+          Veja a leitura dos sensores de linha, inicie e pare o robô seguidor de linha.
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <img src="assets/seguidor.png" />
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <button ion-button color="primary" (click)="startApp()">
+            Ir para o app
+          </button>
+        </ion-col>
+      </ion-row>
+    </ion-slide>
+
+  </ion-slides>
+
 </ion-content>
