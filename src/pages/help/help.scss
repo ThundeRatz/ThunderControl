@@ -12,4 +12,8 @@ page-help {
     }
   }
 
+  .swiper-pagination-bullet {
+    background-color: map-get($colors, light);
+  }
+
 }
