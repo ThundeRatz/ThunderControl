@@ -3,8 +3,18 @@ page-help {
     text-align: center;
   }
 
+  ion-slides {
+    background-color: navy;
+    color: white;
+  }
+
   ion-slide img {
     height: 70vh !important;
     width: auto !important;
+  }
+
+  #start-btn {
+    background-color: white;
+    color: navy;
   }
 }
