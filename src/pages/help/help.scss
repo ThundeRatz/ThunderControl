@@ -1,6 +1,7 @@
 page-help {
   .title {
     text-align: center;
+    top: 5%;
   }
 
   ion-slides {
@@ -8,8 +9,8 @@ page-help {
     color: map-get($colors, light);
   }
 
-  ion-slide img {
-    height: 70vh;
+  .print-img {
+    height: 65vh;
     width: auto;
   }
 
@@ -18,7 +19,7 @@ page-help {
   }
 
   .media-btn {
-    width: 70%;
+    width: 80%;
     font-size: 20px;
   }
 
