@@ -9,12 +9,17 @@ page-help {
   }
 
   ion-slide img {
-    height: 70vh !important;
-    width: auto !important;
+    height: 70vh;
+    width: auto;
   }
 
   .swiper-pagination-bullet {
     background-color: map-get($colors, light);
+  }
+
+  .media-btn {
+    width: 70%;
+    font-size: 20px;
   }
 
 }
