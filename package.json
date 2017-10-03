@@ -46,6 +46,7 @@
     },
     "devDependencies": {
         "@ionic/app-scripts": "2.1.4",
+        "@ionic/cli-plugin-cordova": "^1.4.1",
         "typescript": "2.3.4"
     },
     "description": "App to Control the ThunderKit",

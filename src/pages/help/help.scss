@@ -3,6 +3,13 @@ page-help {
     text-align: center;
   }
 
+  .exit-btn {
+    position: fixed;
+    left: 0.5rem;
+    top: 0.5rem;
+    z-index: 9999;
+  }
+
   ion-slides {
     background-color: map-get($colors, primary);
     color: map-get($colors, light);
@@ -30,6 +37,8 @@ page-help {
     button {
       margin: 0.5rem 0 !important;
     }
+
+    
   }
 
 
