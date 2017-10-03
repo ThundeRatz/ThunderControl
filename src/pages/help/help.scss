@@ -1,17 +1,22 @@
 page-help {
   .title {
     text-align: center;
-    top: 5%;
-  }
+  } 
 
   ion-slides {
     background-color: map-get($colors, primary);
     color: map-get($colors, light);
   }
 
-  .print-img {
-    height: 65vh;
-    width: auto;
+  ion-slide img {
+    height: 70vh !important;
+    width: auto !important;
+  }
+
+  .text {
+    font-family: roboto;
+    font-size: 1.7rem;
+    margin: 0;
   }
 
   .swiper-pagination-bullet {
