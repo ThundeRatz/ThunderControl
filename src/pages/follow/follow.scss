@@ -27,14 +27,15 @@ page-follow {
 
   #sensors-container {
     position: absolute;
-    top: 20vh;
+    top: calc(50% - 160px);
     width: 100%;
   }
 
   #sensors {
     margin: auto;
     height: 320px;
-    width: calc(100% - 64px);
+    width: 320px;
+    padding: 0 10px;
     background: url('../assets/TWorkShop.png') no-repeat transparent center;
 
     display: flex;

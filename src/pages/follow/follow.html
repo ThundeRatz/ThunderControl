@@ -24,7 +24,7 @@
     <div id="sensors">
       <div class="sensor" *ngFor="let sensor of sensors">
         <p class="sensor_value">{{ sensor.value }}</p>
-        <div class="circle" [ngStyle]="{'background-color': sensor.color }"></div>
+        <div class="circle" [ngStyle]="{'background-color': sensor.color.toString() }"></div>
       </div>
     </div>
   </div>

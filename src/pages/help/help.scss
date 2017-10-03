@@ -1,23 +1,37 @@
 page-help {
   .title {
     text-align: center;
-  } 
+  }
 
   ion-slides {
     background-color: map-get($colors, primary);
     color: map-get($colors, light);
   }
 
-  ion-slide img {
-    height: 70vh !important;
-    width: auto !important;
+  ion-slide {
+    img {
+      height: 70vh !important;
+      width: auto !important;
+      margin: 1rem 0;
+    }
+
+    .swipe {
+      width: 20vw !important;
+      height: auto !important;
+      margin: 3rem 0 0 0;
+    }
+
+    p {
+      font-family: roboto;
+      font-size: 1.7rem;
+      margin: 0 0 1rem 0;
+    }
+
+    button {
+      margin: 0.5rem 0 !important;
+    }
   }
 
-  .text {
-    font-family: roboto;
-    font-size: 1.7rem;
-    margin: 0;
-  }
 
   .swiper-pagination-bullet {
     background-color: map-get($colors, light);

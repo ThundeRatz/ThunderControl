@@ -3,20 +3,36 @@ import { NavController, ModalController } from 'ionic-angular';
 import { BleProvider } from '../../providers/ble/ble';
 import { HelpPage } from '../help/help'
 
+class GrayColor {
+  private v: number;
+
+  constructor(n: number) {
+    this.v = n;
+  }
+
+  setV(n: number) {
+    this.v = n;
+  }
+
+  toString(): string {
+    return 'rgb(' + this.v + ',' + this.v + ',' + this.v + ')';
+  }
+}
+
 @Component({
   selector: 'page-follow',
   templateUrl: 'follow.html'
 })
 export class FollowPage {
-  sensors: Array<{ value: number, color: string }>;
+  sensors: Array<{ value: number, color: GrayColor }>;
 
   constructor(public navCtrl: NavController, public ble_provider: BleProvider, public modalCtrl: ModalController) {
     this.sensors = [
-      { value: 0, color: '#FFF' },
-      { value: 1, color: '#CCC' },
-      { value: 2, color: '#555' },
-      { value: 3, color: '#333' },
-      { value: 4, color: '#000' }
+      { value: 0, color: new GrayColor(255) },
+      { value: 1, color: new GrayColor(200) },
+      { value: 2, color: new GrayColor(170) },
+      { value: 3, color: new GrayColor(60) },
+      { value: 4, color: new GrayColor(0) }
     ];
   }
 

@@ -3,109 +3,52 @@
   <ion-slides pager="true">
 
     <ion-slide padding>
-      <ion-row>
-        <ion-col>
-          <h1 class="title">Introdu&ccedil;&atilde;o</h1>
-          <br>
-          <p class="text">
-            ThunderControl &eacute; o aplicativo feito pela equipe ThundeRatz
-            de rob&oacute;tica para controlar o kit do ThunderWorkshop. O workshop
-            tem o objetivo de introduzir alguns conceitos necess&aacute;rios para
-            fazer rob&ocirc;s, mostrando um pouco da forma como a equipe trabalha.
-            Para isso, h&aacute; atividades para rob&ocirc;s de hockey, sum&ocirc; e seguidor
-            de linha.
-          </p>
-        </ion-col>
-      </ion-row>
+      <h1 class="title">Introdu&ccedil;&atilde;o</h1>
+      <br>
+      <p>
+        ThunderControl &eacute; o aplicativo feito pela equipe ThundeRatz
+        de rob&oacute;tica para controlar o kit do ThunderWorkshop. O workshop
+        tem o objetivo de introduzir alguns conceitos necess&aacute;rios para
+        fazer rob&ocirc;s, mostrando um pouco da forma como a equipe trabalha.
+        Para isso, h&aacute; atividades para rob&ocirc;s de hockey, sum&ocirc; e seguidor
+        de linha.
+      </p>
+      <img class="swipe" src="assets/swipe-left.png" />
       <ion-footer style="bottom: 5%">
         <img src="assets/tipografia-tr.png" style="height: auto !important; width: 60vw !important" />
       </ion-footer>
     </ion-slide>
     <ion-slide padding>
-      <ion-row>
-        <ion-col>
-          <p class="text">
-            Ative o bluetooth.
-          </p>
-        </ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col>
-          <img src="assets/slide1.png" />
-        </ion-col>
-      </ion-row>
+      <p>Ative o bluetooth. </p>
+      <img src="assets/slide1.png" />
     </ion-slide>
     <ion-slide padding>
-      <ion-row>
-        <ion-col>
-          <p class="text">
-            Controle o hockey ou o sum&ocirc; com o joystick.
-          </p>
-        </ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col>
-          <img src="assets/slide2.png" />
-        </ion-col>
-      </ion-row>
+      <p>Controle o hockey ou o sum&ocirc; com o joystick.</p>
+      <img src="assets/slide2.png" />
     </ion-slide>
     <ion-slide padding>
-      <ion-row>
-        <ion-col>
-          <p class="text">
-            Veja a leitura dos sensores de linha, inicie e pare o rob&ocirc; seguidor de linha.
-          </p>
-        </ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col>
-          <img src="assets/slide3.png" />
-        </ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col>
-          <button ion-button color="light" (click)="startApp()">
-            Ir para o app
-          </button>
-        </ion-col>
-      </ion-row>
+      <p>Veja a leitura dos sensores de linha, inicie e pare o rob&ocirc; seguidor de linha. </p>
+      <img src="assets/slide3.png" />
+      <button ion-button color="light" (click)="startApp()">
+        Ir para o app
+      </button>
     </ion-slide>
     <ion-slide padding>
-      <ion-row>
-        <ion-col>
-          <p class="text">
-            Saiba mais sobre a equipe e entre em contato caso tenha interesse no workshop.
-          </p>
-        </ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col>
-          <button ion-button color="light" class="media-btn" (click)="openFacebook()">
-            <ion-icon name="logo-facebook"></ion-icon> &nbsp; /ThundeRatz
-          </button>
-        </ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col>
-          <button ion-button color="light" class="media-btn" (click)="openInstagram()">
-            <ion-icon name="logo-instagram"></ion-icon> &nbsp; /ThundeRatz
-          </button>
-        </ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col>
-          <button ion-button color="light" class="media-btn" (click)="openYoutube()">
-            <ion-icon name="logo-youtube"></ion-icon> &nbsp; /ThundeRatz
-          </button>
-        </ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col>
-          <button ion-button color="light" class="media-btn" (click)="openWebsite()">
-            <ion-icon name="globe"></ion-icon> &nbsp; thunderatz.org
-          </button>
-        </ion-col>
-      </ion-row>
+      <p>
+        Saiba mais sobre a equipe e entre em contato caso tenha interesse no workshop.
+      </p>
+      <button ion-button color="light" class="media-btn" (click)="openFacebook()">
+        <ion-icon name="logo-facebook"></ion-icon> &nbsp; /ThundeRatz
+      </button>
+      <button ion-button color="light" class="media-btn" (click)="openInstagram()">
+        <ion-icon name="logo-instagram"></ion-icon> &nbsp; /ThundeRatz
+      </button>
+      <button ion-button color="light" class="media-btn" (click)="openYoutube()">
+        <ion-icon name="logo-youtube"></ion-icon> &nbsp; /ThundeRatz
+      </button>
+      <button ion-button color="light" class="media-btn" (click)="openWebsite()">
+        <ion-icon name="globe"></ion-icon> &nbsp; thunderatz.org
+      </button>
     </ion-slide>
 
   </ion-slides>
