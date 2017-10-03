@@ -29,12 +29,9 @@
     <ion-slide padding>
       <p>Veja a leitura dos sensores de linha, inicie e pare o rob&ocirc; seguidor de linha. </p>
       <img src="assets/slide3.png" />
-      <button ion-button color="light" (click)="startApp()">
-        Ir para o app
-      </button>
     </ion-slide>
     <ion-slide padding>
-      <p>
+      <p margin="10rem">
         Saiba mais sobre a equipe e entre em contato caso tenha interesse no workshop.
       </p>
       <button ion-button color="light" class="media-btn" (click)="openFacebook()">
@@ -49,6 +46,13 @@
       <button ion-button color="light" class="media-btn" (click)="openWebsite()">
         <ion-icon name="globe"></ion-icon> &nbsp; thunderatz.org
       </button>
+      <ion-row margin-top="15rem" padding-top="25rem">
+        <ion-col margin-top="10rem">
+          <button ion-button color="light" id="home-btn" (click)="startApp()">
+            <ion-icon name="home"></ion-icon>
+          </button>
+        </ion-col>
+      </ion-row>
     </ion-slide>
 
   </ion-slides>

@@ -38,8 +38,16 @@ page-help {
   }
 
   .media-btn {
-    width: 80%;
+    width: 80%; 
     font-size: 20px;
+    text-transform: none;
+    font-family: roboto;
+    font-weight: normal;
+  }
+
+  #home-btn {
+    font-size: 25px;
+    height: 6rem;
   }
 
 }
