@@ -22,9 +22,9 @@
 
   <div id="sensors-container">
     <div id="sensors">
-      <div class="sensor" *ngFor="let sensor of sensors">
-        <p class="sensor_value">{{ sensor.value }}</p>
-        <div class="circle" [ngStyle]="{'background-color': sensor.color.toString() }"></div>
+      <div class="sensor" *ngFor="let s of ble_provider.sensors">
+        <p class="sensor_value">{{ s }}</p>
+        <div class="circle" [ngStyle]="{'background-color': grayToString(s) }"></div>
       </div>
     </div>
   </div>

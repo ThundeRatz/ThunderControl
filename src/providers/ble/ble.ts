@@ -6,9 +6,11 @@ import { LoadingController, ToastController, AlertController } from 'ionic-angul
 export class BleProvider {
   public devices: Array<any>;
   private connected_dev: any;
+  public sensors: number[];
 
   constructor(public ble: BLE, private toaster: ToastController, private loader: LoadingController, private alertCtrl: AlertController) {
     this.devices = [];
+    this.sensors = [0, 0, 512, 1000, 4]; // Random test values
   }
 
   scan() {
@@ -76,9 +78,20 @@ export class BleProvider {
         }).present();
 
         this.ble.startNotification(dev.id, "FFE0", "FFE1").subscribe((data) => {
-          let received = new Uint8Array(data);
-          console.log("Recebido: ");
-          console.log(received);
+          let received = new Uint16Array(data)[0];
+          console.log("Data: ", data);
+          console.log("Recebido: ", received);
+          if ((received & 0x8801) == 0) {
+              let index = (received >> 12) & 0x0007;
+              let value = (received >> 1) & 0x03FF;
+              if (index < 5) {
+                this.sensors[index] = value;
+              } else {
+                console.log("Indice incorreto");
+              }
+          } else {
+            console.log ("Mensagem incorreta");
+          }
         }, () => {
           console.log("ERR - startNotification");
         });
