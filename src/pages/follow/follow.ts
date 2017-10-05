@@ -8,11 +8,11 @@ import { HelpPage } from '../help/help'
   templateUrl: 'follow.html'
 })
 export class FollowPage {
-  
+
   constructor(public navCtrl: NavController, public ble_provider: BleProvider, public modalCtrl: ModalController) {
-    
+
   }
-  
+
   grayToString(v: number): string {
     v = Math.floor(v * 255 / 1023);
     return 'rgb(' + v + ',' + v + ',' + v + ')';
@@ -37,12 +37,5 @@ export class FollowPage {
 
   pause() {
     this.ble_provider.sendCommand(201);
-  }
-
-  ionViewDidLoad() {
-    let circles = document.getElementsByClassName('circle') as HTMLCollectionOf<HTMLElement>;
-    for (let i = 0; i < circles.length; i++) {
-      circles[i].style.height = window.getComputedStyle(circles[i]).width;
-    }
   }
 }

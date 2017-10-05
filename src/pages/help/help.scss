@@ -37,17 +37,14 @@ page-help {
     button {
       margin: 0.5rem 0 !important;
     }
-
-    
   }
-
 
   .swiper-pagination-bullet {
     background-color: map-get($colors, light);
   }
 
   .media-btn {
-    width: 80%; 
+    width: 80%;
     font-size: 20px;
     text-transform: none;
     font-family: roboto;
@@ -55,8 +52,9 @@ page-help {
   }
 
   #home-btn {
-    font-size: 25px;
-    height: 6rem;
+    border-radius: 10px;
+    font-size: 1.8rem;
+    height: 4rem;
   }
 
 }

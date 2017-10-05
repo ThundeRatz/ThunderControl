@@ -42,7 +42,7 @@ export class RCPage {
   bt() {
     this.ble_provider.ble.isEnabled().then(() => {
       this.ble_provider.scan();
-    }, () => {
+    }).catch(() => {
       this.ble_provider.ble.enable();
     });
   }
@@ -96,8 +96,6 @@ export class RCPage {
         this.current_section += "3";
 
       if (this.current_section != this.previous_section) {
-        console.log("Changed to", this.current_section);
-        console.log(this.section[this.current_section]);
         this.ble_provider.sendCommand(this.section[this.current_section]);
       }
 
